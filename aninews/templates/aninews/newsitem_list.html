@@ -1,0 +1,31 @@
+{% extends 'base_html.html' %}
+{% load static %}
+{% block main %}
+<div class="FrontPage">
+{% for item in news %}
+	<div class="row">
+	<div class="col-md-4"><img src="{{item.image.url}}" alt="{{item.title}}" height="{{item.image.height_field}}" width="{{item.image.width_field}}" class="left-img"></div>
+	<div class="col-md-8">
+	<h1><a href="{{item.get_absolute_url}}">{{item.title}}</a></h1>
+	{% if item.eventitem %}
+		<dl>
+			<dt>Time:</dt>
+			<dd>{{item.eventitem.when}}</dd>
+			<dt>Location:</dt>
+			<dd>{{item.eventitem.where}}</dd>
+		</dl>
+	{% endif %}
+	<tr><td>{{ item.contents_saved|safe }}</td></tr>
+	</div>
+	</div>
+	<div class="row"><hr /></div>
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block extraScripts %}
+<script>
+var menuItem = document.getElementById("menu_event_updates");
+menuItem.className = "active";
+</script>
+{% endblock %}
