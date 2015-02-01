@@ -4,6 +4,7 @@ import markdown
 
 # Create your models here.
 
+
 class NewsItem(models.Model):
     title = models.CharField(max_length=256)
     published = models.DateTimeField('Publish at')
@@ -23,6 +24,7 @@ class NewsItem(models.Model):
 
     class Meta:
         ordering = ['-published']
+
 
 class EventItem(NewsItem):
     when = models.DateTimeField()

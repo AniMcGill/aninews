@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
-from aninews.models import NewsItem, EventItem
+from aninews.models import NewsItem
+
 
 class NewsFeed(Feed):
     title = "McGill Students' Anime Club News"
@@ -8,7 +9,6 @@ class NewsFeed(Feed):
     description = "Latest News and Events from the McGill Students' Anime Club"
     author_name = "McGill Students' Anime Club"
     item_author_name = author_name
-    
 
     def items(self):
         return NewsItem.objects.all()[:10]
