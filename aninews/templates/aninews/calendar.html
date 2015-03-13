@@ -2,7 +2,27 @@
 {% load static %}
 {% block main %}
 <div class="FrontPage">
-
+<h1>{{ month|date:"F Y" }}</h1>
+<table>
+	<tr>
+		<th>Sunday</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wenesday</th>
+		<th>Thursdays</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	</tr>
+	{% for week in calendar %}
+	<tr>
+		{% for day in week %}
+		<td><span class="cal-date">{{day.day}}</span>
+		
+		</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+</table>	
 </div>
 {% endblock %}
 

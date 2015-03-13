@@ -23,3 +23,10 @@ class CalendarView(MonthArchiveView):
     allow_empty = True
     model = EventItem
     date_field = 'when'
+    template = 'aninews/calendar.html'
+    def get_context_data(self, **kwargs):
+        context = super(CalendarView, self).get_context_data(**kwargs)
+        month = context['month']
+        cal = calendar.Calendar(6)
+        context['calendar'] = cal.monthdatescalendar(month.year, month.month)
+        return context
