@@ -10,7 +10,7 @@ class NewsItem(models.Model):
     published = models.DateTimeField('Publish at')
     contents = models.TextField()
     contents_saved = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(null=True)
 
     def save(self, *args, **kwargs):
         self.contents_saved = markdown.markdown(self.contents)
